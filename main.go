@@ -112,12 +112,15 @@ func main() {
 	case <-signals:
 		// It is required that the listener is closed as soon as the signal is
 		// received to prevent any new traffic from getting in
+		fmt.Println("----->Starting to close listener -----> added by David")
 		listener.Close()
 
+		fmt.Println("----->Prepare to wait for 1 Second -----> added by David")
 		// busy loop until all connections are closed
-		ticker := time.NewTicker(10 * time.Millisecond)
+		ticker := time.NewTicker(1 * time.Second)
 		for {
 			if stillActive := connMgr.closeIdleConns(); !stillActive {
+				fmt.Println("----->Exit soon -----> added by David")
 				return
 			}
 			<-ticker.C
