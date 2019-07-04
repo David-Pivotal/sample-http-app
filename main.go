@@ -115,9 +115,9 @@ func main() {
 		fmt.Println("----->Starting to close listener -----> added by David")
 		listener.Close()
 
-		fmt.Println("----->Prepare to wait for 1 Second -----> added by David")
+		fmt.Println("----->Prepare to wait for 1000 Millisecond  -----> added by David")
 		// busy loop until all connections are closed
-		ticker := time.NewTicker(1 * time.Second)
+		ticker := time.NewTicker(1000 * time.Millisecond)
 		for {
 			if stillActive := connMgr.closeIdleConns(); !stillActive {
 				fmt.Println("----->Exit soon -----> added by David")
